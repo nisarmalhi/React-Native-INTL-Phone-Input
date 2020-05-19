@@ -168,7 +168,7 @@ export default class IntlPhoneInput extends React.Component {
                     <TouchableOpacity onPress={() => this.hideModal()} style={[styles.closeButtonStyle, closeButtonStyle]}>
                     <Image style={styles.closeIconStyle} source={Platform.select({ ios: CloseIconIOS, android: CloseIconAndroid})} />
               </TouchableOpacity>
-                  <TextInput autoFocus={false} autoCompleteType={'off'} autoCorrect={false} onChangeText={this.filterCountries} placeholder={filterText || 'Enter country name'} style={[styles.filterInputStyle, filterInputStyle]} />
+                  <TextInput autoFocus={false} autoComplete={'off'} autoCorrect={false} onChangeText={this.filterCountries} placeholder={filterText || 'Enter country name'} style={[styles.filterInputStyle, filterInputStyle]} />
                 </View>}
                     renderItem={
                       ({ item, index }) => (
