@@ -9,6 +9,7 @@ import {
   TouchableWithoutFeedback,
   TouchableOpacity,
   TextInput,
+  Keyboard
 } from 'react-native';
 import PropTypes from 'prop-types';
 import data from './Countries';
@@ -69,11 +70,15 @@ export default class IntlPhoneInput extends React.Component {
   }
 
 
-  showModal = () => (this.props.disableCountryChange ? null : this.setState({ modalVisible: true }));
+  showModal = () => {
+    (this.props.disableCountryChange ? null : this.setState({ modalVisible: true }))
+  
+  };
 
   hideModal = () => this.setState({ modalVisible: false });
 
   onCountryChange = async (code) => {
+ 
     const countryData = await data;
     try {
       const country = await countryData.filter((obj) => obj.code === code)[0];
@@ -104,9 +109,9 @@ export default class IntlPhoneInput extends React.Component {
     this.setState({ countryData });
   }
 
-  focus() {
-    this.props.inputRef.current.focus();
-  }
+  // focus() {
+  //   this.props.inputRef.current.focus();
+  // }
 
   renderModal=() => {
     if (this.props.customModal) return this.props.customModal(this.state.modalVisible,this.state.countryData,this.onCountryChange);
@@ -129,7 +134,7 @@ export default class IntlPhoneInput extends React.Component {
         <SafeAreaView style={{ flex: 1 }}>
         <View style={[styles.modalContainer, modalContainer]}>
           <View style={styles.filterInputStyleContainer}>
-            <TextInput autoFocus onChangeText={this.filterCountries} placeholder={filterText || 'Filter'} style={[styles.filterInputStyle, filterInputStyle]} />
+            <TextInput  onChangeText={this.filterCountries} placeholder={filterText || 'Filter'} style={[styles.filterInputStyle, filterInputStyle]} />
             <Text style={[styles.searchIconStyle, searchIconStyle]}>🔍</Text>
           </View>
           <FlatList
