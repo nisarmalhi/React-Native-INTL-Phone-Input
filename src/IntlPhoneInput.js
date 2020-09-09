@@ -16,6 +16,7 @@ import data from './Countries';
 
 export default class IntlPhoneInput extends React.Component {
   constructor(props) {
+    debugger
     super(props);
     const defaultCountry = data.filter((obj) => obj.code === props.defaultCountry)[0] || data.filter((obj) => obj.code === 'TR')[0];
     this.state = {
@@ -24,6 +25,7 @@ export default class IntlPhoneInput extends React.Component {
       modalVisible: false,
       dialCode: defaultCountry.dialCode,
       phoneNumber: '',
+      masking:defaultCountry.masking,
       mask: defaultCountry.mask,
       countryData: data,
       selectedCountry:defaultCountry
@@ -70,10 +72,7 @@ export default class IntlPhoneInput extends React.Component {
   }
 
 
-  showModal = () => {
-    (this.props.disableCountryChange ? null : this.setState({ modalVisible: true }))
-  
-  };
+  showModal = () => (this.props.disableCountryChange ? null : this.setState({ modalVisible: true }));
 
   hideModal = () => this.setState({ modalVisible: false });
 
@@ -86,6 +85,7 @@ export default class IntlPhoneInput extends React.Component {
         dialCode: country.dialCode,
         flag: country.flag,
         mask: country.mask,
+        masking:country.masking,
         phoneNumber: '',
         selectedCountry:country
       });
@@ -97,6 +97,7 @@ export default class IntlPhoneInput extends React.Component {
         flag: defaultCountry.flag,
         mask: defaultCountry.mask,
         phoneNumber: '',
+        masking:defaultCountry.masking,
         selectedCountry:defaultCountry
       });
     }
@@ -134,7 +135,7 @@ export default class IntlPhoneInput extends React.Component {
         <SafeAreaView style={{ flex: 1 }}>
         <View style={[styles.modalContainer, modalContainer]}>
           <View style={styles.filterInputStyleContainer}>
-            <TextInput  onChangeText={this.filterCountries} placeholder={filterText || 'Filter'} style={[styles.filterInputStyle, filterInputStyle]} />
+            <TextInput autoFocus onChangeText={this.filterCountries} placeholder={filterText || 'Filter'} style={[styles.filterInputStyle, filterInputStyle]} />
             <Text style={[styles.searchIconStyle, searchIconStyle]}>🔍</Text>
           </View>
           <FlatList
@@ -195,7 +196,8 @@ renderAction=()=>{
         <TextInput
           {...inputProps}
           style={[styles.phoneInputStyle, phoneInputStyle]}
-          placeholder={this.props.placeholder || this.state.mask.replace(/9/g, '_')}
+          placeholder={this.props.placeholder || this.state.masking ? this.state.masking : this.state.mask.replace(/9/g, '_')}
+
           autoCorrect={false}
           keyboardType="number-pad"
           secureTextEntry={false}
