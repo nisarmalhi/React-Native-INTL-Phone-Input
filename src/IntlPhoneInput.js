@@ -16,7 +16,6 @@ import data from './Countries';
 
 export default class IntlPhoneInput extends React.Component {
   constructor(props) {
-    debugger
     super(props);
     const defaultCountry = data.filter((obj) => obj.code === props.defaultCountry)[0] || data.filter((obj) => obj.code === 'TR')[0];
     this.state = {
@@ -196,8 +195,8 @@ renderAction=()=>{
         <TextInput
           {...inputProps}
           style={[styles.phoneInputStyle, phoneInputStyle]}
-          placeholder={this.props.placeholder || this.state.masking ? this.state.masking : this.state.mask.replace(/9/g, '_')}
-
+          placeholder={this.state.masking}
+          placeholderTextColor="gray"
           autoCorrect={false}
           keyboardType="number-pad"
           secureTextEntry={false}

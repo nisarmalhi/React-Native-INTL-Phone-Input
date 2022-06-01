@@ -222,7 +222,7 @@ const Countries = [
   { ru:"Тувалу",lt:"Tuvalu",tr:"Tuvalu", en: 'Tuvalu',flag: '🇹🇻',code: 'TV', dialCode: '+688', mask: '999999' },
   { ru:"Уганда",lt:"Uganda",tr:"Uganda", en: 'Uganda',flag: '🇺🇬',code: 'UG', dialCode: '+256', mask: '9999 999999' },
   { ru:"Украина",lt:"Ukraina",tr:"Ukrayna", en: 'Ukraine',flag: '🇺🇦',code: 'UA', dialCode: '+380', mask: '999 999 9999' },
-  { ru:"Объединенные Арабские Эмираты",lt:"Jungtiniai Arabų Emyratai",tr:"Birleşik Arap Emirlikleri", en: 'United Arab Emirates',flag: '🇦🇪',code: 'AE', dialCode: '+971', mask: '999 999 9999' },
+  { ru:"Объединенные Арабские Эмираты",lt:"Jungtiniai Arabų Emyratai",tr:"Birleşik Arap Emirlikleri", en: 'United Arab Emirates',flag: '🇦🇪',code: 'AE', dialCode: '+971', mask: '99 999 9999', masking: "51 234 5678" },
   { ru:"объединенное Королевство",lt:"Jungtinė Karalystė",tr:"Birleşik Krallık", en: 'United Kingdom',flag: '🇬🇧',code: 'GB', dialCode: '+44', mask: '99999 999999' },
   { ru:"Соединенные Штаты",lt:"Jungtinės Valstijos",tr:"Amerika Birleşik Devletleri", en: 'United States',flag: '🇺🇸',code: 'US', dialCode: '+1', mask: '(999) 999-9999' },
   { ru:"Уругвай",lt:"Urugvajus",tr:"Uruguay", en: 'Uruguay',flag: '🇺🇾',code: 'UY', dialCode: '+598', mask: '999 999 999' },
